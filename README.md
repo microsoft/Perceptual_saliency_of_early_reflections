@@ -18,6 +18,11 @@ Outline the file contents of the repository. It helps users navigate the codebas
 | `demo.m`          | Run this file to start the demo.           |
 | `Code/`           | Functions to run `demo.m`                  |
 | `Data/`           | Data required by `demo.m`                  |
+|                   |                                            |
+| `playAudio.pd`    | Use this file to listen to audio examples, |
+|                   | or manually listen to the wav files.       |
+| `Auralizations/`  | Audio examples used by `playAudio.pd`      |
+|                   |                                            |
 | `.gitignore`      | Define what to ignore at commit time.      |
 | `README.md`       | This README file.                          |
 | `LICENSE`         | The license for the sample.                |
@@ -33,6 +38,7 @@ Run `demo.m` (will tmporarily add needed folders to the Matlab search path).
 ## Runnning the sample
 
 Run `demo.m` or execute block by block.
+Listen to audio files in `Auraliizations/` or use `playAudio.pd`.
 
 ## Contributing
 

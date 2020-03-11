@@ -1,9 +1,11 @@
 % Runs the parametric encoding/decoding engine proposed in [1]
-
-% ToDo: Add reference to paper if published
-
+%
 % fabian.brinkmann@tu-berlin.de, Audio Communication Group TU Berlin &
 % Microsoft Research, Redmond, USA
+%
+% [1] Fabian Brinkmann, Hannes Gamper, Nikunj Raghuvanshi, and Ivan Tashev
+%     'Towards encoding perceptually salient early reflections for
+%      parametric spatial audio rendering.' 148th AES Convention (Accepted)
 
 %   Copyright 2019 Microsoft Corporation
 %
