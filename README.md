@@ -7,7 +7,7 @@ urlFragment: "https://github.com/microsoft/Perceptual_saliency_of_early_reflecti
 
 # Official Microsoft Sample
 
-Demo code for encoding perceptually salient early refelctions for parametric spatial audio rendering.
+Demo code for encoding perceptually salient early reflections for parametric spatial audio rendering.
 
 ## Contents
 
