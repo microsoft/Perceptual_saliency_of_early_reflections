@@ -1,7 +1,7 @@
 ---
 languages:
 - Matlab
-description: "Demo code for encoding perceptually salient early refelctions for parametric spatial audio rendering"
+description: "Demo code for encoding perceptually salient early reflections for parametric spatial audio rendering"
 urlFragment: "https://github.com/microsoft/Perceptual_saliency_of_early_reflections"
 ---
 
@@ -38,7 +38,7 @@ Run `demo.m` (will tmporarily add needed folders to the Matlab search path).
 ## Runnning the sample
 
 Run `demo.m` or execute block by block.
-Listen to audio files in `Auraliizations/` or use `playAudio.pd`.
+Listen to audio files in `Auralizations/` or use `playAudio.pd`.
 
 ## Contributing
 
