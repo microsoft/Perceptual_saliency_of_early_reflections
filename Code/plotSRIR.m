@@ -36,6 +36,9 @@
 %         of the colormap is 1 dB. (default = 'G' for Green)
 % cbar  - true to show colorbar. false to hide colorbar (default = true)
 %
+% O U T P U T
+% handle - handle to plot object
+%
 %
 % fabian.brinkmann@tu-berlin.de, Audio Communication Group TU Berlin &
 % Microsoft Research, Redmond, USA
@@ -59,7 +62,7 @@
 %   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
 %   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 %   DEALINGS IN THE SOFTWARE.
-function plotSRIR(RIR, DOA, plane, fs, t_max, pr, pn, type, ls, c, cbar)
+function handle = plotSRIR(RIR, DOA, plane, fs, t_max, pr, pn, type, ls, c, cbar)
 
 % default values
 if ~exist('fs', 'var')
@@ -144,13 +147,13 @@ if strcmpi(plane, 'rir')
     ylab = 'Amplitude in dB';
 elseif strcmpi(plane, 'lat')
     p_ang  = lat;
-    ylab   = 'Lateral angle in degree';
+    ylab   = 'Lateral angle in degrees';
     yli    = [-90 90];
     ytick  = -90:22.5:90;
     ytilab = {-90 '' -45 '' 0 '' 45 '' 90};
 elseif strcmpi(plane, 'pol')
     p_ang = pol;
-    ylab  = 'Polar angle in degree';
+    ylab  = 'Polar angle in degrees';
     yli   = [-90 270];
     ytick = -90:45:270;
     ytilab = {-90 '' 0 '' 90 '' 180 '' 270};
@@ -205,7 +208,7 @@ elseif strcmpi(type, 'line')
 elseif strcmpi(type, 'scatter')
     for nn = 1:numel(p_ang)
         if ~isnan(h(nn))
-            plot3((nn-1)/fs*1e3, p_ang(nn), h(nn), ls{1}, 'color', c(round(hn(nn)+pr+1),:), 'LineWidth', ls{2}, 'MarkerSize', ls{3})
+            handle = plot3((nn-1)/fs*1e3, p_ang(nn), h(nn), ls{1}, 'color', c(round(hn(nn)+pr+1),:), 'LineWidth', ls{2}, 'MarkerSize', ls{3});
         end
     end
 else

@@ -1,11 +1,12 @@
 % Runs the parametric encoding/decoding engine proposed in [1]
 %
+% a.jueterbock@tu-berlin.de, Audio Communication Group TU Berlin &
 % fabian.brinkmann@tu-berlin.de, Audio Communication Group TU Berlin &
 % Microsoft Research, Redmond, USA
 %
-% [1] Fabian Brinkmann, Hannes Gamper, Nikunj Raghuvanshi, and Ivan Tashev
-%     'Towards encoding perceptually salient early reflections for
-%      parametric spatial audio rendering.' 148th AES Convention (Accepted)
+% [1] Tobias Jüterbock, Fabian Brinkmann, Hannes Gamper, Nikunj Raghuvanshi, and Ivan Tashev
+%     'Spatio-Temporal Windowing for Encoding Perceptually Salient Early Reflections in Parametric Spatial Audio Rendering'
+%     JAES - %TODO INSERT PUBLICATION NAME
 
 %   Copyright 2019 Microsoft Corporation
 %
@@ -29,29 +30,36 @@
 close all; clear; clc
     
 % add paths
-addpath(genpath('Code'))
+% addpath(genpath('Code'))
+addpath('Code/')
+addpath('Code/Helper/')
 addpath SRIRs
 
 % check for HRIR
 if ~exist('FABIAN_HRIR_measured_HATO_0', 'file')
     getHRIR
 end
-
+%%
 % --------------------------------------------------------- select the room
 room.volume        = 'small';   % 'small', 'medium', or 'large'
 room.reverberation = 'dry';     % 'dry', 'medium', or 'wet'
-room.name          = ['ROOM-' room.volume ' REVERBERATION-' room.reverberation];
+room.position      = 'corner';  % 'center', 'wall', or 'corner'
+room.name          = ['ROOM-'           room.volume        ...
+                      ' REVERBERATION-' room.reverberation ...
+                      ' POSITION-'      room.position];
 
 
 % ------------------------------------ parameters for detecting refelctions
 %                                        (see detectReflections.m for help)
-setup.timeMax       = 85;
-setup.timeRange     = [.5 1];
-setup.angleRange    = [1 6 1];
-setup.thEcho        = [-0.06   0 1  0 .5 0 0];
-setup.thMask        = [-1.00 -10 1 10 .5 0 1];
-setup.eEcho         = [1 .05];
-setup.eMask         = [1 .35];
+    setup.timeMax     = 30;
+    setup.timeRange   = [.5 .8];
+    setup.angleRange  = [1 1 1 1 1];
+    setup.thEcho_lat  = [-0.06   0 1  0 .5 0 0]; 
+    setup.thEcho_pol  = [-0.06   0 1  0 .5 0 0]; 
+    setup.thMask_lat  = [-1 -17.25 1 10 .5 0 1]; 
+    setup.thMask_pol  = [-1 -17.25 1 10 .5 0 1]; 
+    setup.eEcho       = [1 .05];
+    setup.eMask       = [1 .35];
 
 
 % ----------------------- parameters for reducing the number of reflections
@@ -75,7 +83,8 @@ data = load(room.name);
 %% ----------------------------------------------------- detect reflections
 fprintf('--------- %s ---------\n', room.name)
 fprintf('Detect reflections\n')
-[er.r, er.t, er.isAudible, er.tEcho, er.tMask] = detectReflections(data.doa, data.rir, data.fs, setup.timeMax, setup.timeRange, setup.angleRange, setup.thEcho, setup.thMask, setup.eEcho, setup.eMask, data.t_mix, room.name);
+% [er.r, er.t, er.isAudible, er.tEcho, er.tMask] = detectReflections(data.doa, data.rir, data.fs, setup.timeMax, setup.timeRange, setup.angleRange, setup.thEcho, setup.thMask, setup.eEcho, setup.eMask, data.t_mix, room.name);
+[er.r, er.t, er.isAudible, er.tEcho, er.tMask] = detectReflections(data.doa, data.rir, data.fs, setup.timeMax, setup.timeRange, setup.angleRange, setup.thEcho_lat, setup.thEcho_pol, setup.thMask_lat, setup.thMask_pol, setup.eEcho, setup.eMask, data.t_mix, true);
 
 % ------------------------------------------------------ reduce refelctions
 fprintf('Reduce reflections\n')

@@ -26,7 +26,7 @@ if normalize
     data = data / max(abs(data(:)));
 end
 
-data             = db(data);
+data             = db(abs(data));
 data(data==-Inf) = -300;
 
 t = (0:size(data,1)-1)' / fs * 1e3;
@@ -45,7 +45,7 @@ if ischar(color)
 end
 
 hold on
-plot(t, data, line, 'color', color, 'LineWidth', 1)
+plot(t, data, line, 'color', color, 'LineWidth', 1) %TODO data should be real already
 hold off
 
 box on
