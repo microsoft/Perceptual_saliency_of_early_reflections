@@ -13,6 +13,9 @@ end
 if ~license('test','distrib_computing_toolbox')
     warning("It seems that the Parallel Computing Toolbox is not installed.")
 end
+if exist('immse', 'file') ~= 2
+    warning("It seems that the Image Processing Toolbox is not installid")
+end
 if ~license('test','curve_fitting_toolbox')
     warning("It seems that the Curve Fitting Toolbox is not installed.")
 end
