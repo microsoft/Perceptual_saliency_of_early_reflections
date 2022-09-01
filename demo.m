@@ -49,9 +49,9 @@ room.name          = ['ROOM-'           room.volume        ...
                       ' POSITION-'      room.position];
 
 
-% ------------------------------------ parameters for detecting refelctions
+% ------------------------------------ parameters for detecting reflections
 %                                        (see detectReflections.m for help)
-    setup.timeMax     = 30;
+    setup.timeMax     = 85;
     setup.timeRange   = [.5 .8];
     setup.angleRange  = [1 1 1 1 1];
     setup.thEcho_lat  = [-0.06   0 1  0 .5 0 0]; 
