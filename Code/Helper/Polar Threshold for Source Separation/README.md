@@ -5,9 +5,9 @@ The scripts in this folder were used to calculate the angular threshold for sour
 Required Resources:
 
 * Parallel Computing Toolbox
-	* A few parfor loops are used in the scripts. You can get around this by changing all parfor loops to for loops.
 * Image Processing Toolbox
-
+* Signal Processing Toolbox
+* Curve Fitting Toolbox
 * [The HUTUBS HRTF Database](https://depositonce.tu-berlin.de/handle/11303/9429) 
 * [The SOFiA sound field analysis toolbox](https://audiogroup.web.th-koeln.de/SOFiA_wiki/WELCOME.html)
 * [AKtools](https://www.ak.tu-berlin.de/menue/publications/open_research_tools/aktools/)
@@ -22,7 +22,7 @@ Run this script first to temporarily add the required third party toolboxes to y
 Run this script to model two concurrent sources and evaluate the perceived location of the summed signal.
 
 `c_optimizeFitRange.m`
-Run this script to find the optimum fitting interval for `d_calculatePolarThreshold.m` (minimized total fit error), according to section A.3.
+Run this script to find the optimum fitting interval for `d_calculatePolarThreshold.m` (minimized total fit error).
 
 `d_calculatePolarThreshold.m`
 Run this script to calculate the polar threshold for source separation by thresholding the Wasserstein Distance between localization patterns of two concurrent sources compared to one source.
