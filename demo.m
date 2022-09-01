@@ -88,9 +88,8 @@ data = load(room.name);
 if ~license('test','signal_toolbox')
     warning("It seems that the Signal Processing Toolbox is not installed.")
 end
-try hor2sph(0,0);
-catch
-    warning("It seems that AKtools is not installed. Download at https://www.ak.tu-berlin.de/menue/publications/open_research_tools/aktools/")
+if exist('hor2sph','file') ~= 2
+    warning("It seems that AKtools is not inside the Matlab search path. It is available from https://www.ak.tu-berlin.de/menue/publications/open_research_tools/aktools/")
 end
 
 %% ----------------------------------------------------- detect reflections
