@@ -8,7 +8,7 @@
 %     'Spatio-Temporal Windowing for Encoding Perceptually Salient Early Reflections in Parametric Spatial Audio Rendering'
 %     JAES - %TODO INSERT PUBLICATION NAME
 
-%   Copyright 2019 Microsoft Corporation
+%   Copyright 2022 Microsoft Corporation
 %
 %   Permission is hereby granted, free of charge, to any person obtaining a
 %   copy of this software and associated documentation files (the "Software"),
@@ -28,9 +28,13 @@
 %   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 %   DEALINGS IN THE SOFTWARE.
 close all; clear; clc
-    
+
+% REQUIREMENTS:
+% DSP System Toolbox
+% Signal Processing Toolbox 
+% AKtools (https://www.ak.tu-berlin.de/menue/publications/open_research_tools/aktools/)
+
 % add paths
-% addpath(genpath('Code'))
 addpath('Code/')
 addpath('Code/Helper/')
 addpath SRIRs
@@ -39,6 +43,7 @@ addpath SRIRs
 if ~exist('FABIAN_HRIR_measured_HATO_0', 'file')
     getHRIR
 end
+
 %%
 % --------------------------------------------------------- select the room
 room.volume        = 'small';   % 'small', 'medium', or 'large'
@@ -79,6 +84,14 @@ setup.HRTF_fs       = 44100;
 % --------------------------------------------------------------- load data
 data = load(room.name);
 
+%% -----------------------------------------------------check for toolboxes
+if ~license('test','signal_toolbox')
+    warning("It seems that the Signal Processing Toolbox is not installed.")
+end
+try hor2sph(0,0);
+catch
+    warning("It seems that AKtools is not installed. Download at https://www.ak.tu-berlin.de/menue/publications/open_research_tools/aktools/")
+end
 
 %% ----------------------------------------------------- detect reflections
 fprintf('--------- %s ---------\n', room.name)
