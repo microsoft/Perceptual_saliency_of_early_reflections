@@ -7,7 +7,7 @@ urlFragment: "https://github.com/microsoft/Perceptual_saliency_of_early_reflecti
 
 # Official Microsoft Sample
 
-Demo code for encoding perceptually salient early refelctions for parametric spatial audio rendering.
+Demo code for encoding perceptually salient early reflections for parametric spatial audio rendering.
 
 ## Contents
 
@@ -35,7 +35,7 @@ Needs parts of the FABIAN HRTF data base from (https://dx.doi.org/10.14279/depos
 
 Run `demo.m` (will tmporarily add needed folders to the Matlab search path).
 
-## Runnning the sample
+## Running the sample
 
 Run `demo.m` or execute block by block.
 Listen to audio files in `Auralizations/` or use `playAudio.pd`.
