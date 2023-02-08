@@ -95,7 +95,6 @@ end
 %% ----------------------------------------------------- detect reflections
 fprintf('--------- %s ---------\n', room.name)
 fprintf('Detect reflections\n')
-% [er.r, er.t, er.isAudible, er.tEcho, er.tMask] = detectReflections(data.doa, data.rir, data.fs, setup.timeMax, setup.timeRange, setup.angleRange, setup.thEcho, setup.thMask, setup.eEcho, setup.eMask, data.t_mix, room.name);
 [er.r, er.t, er.isAudible, er.tEcho, er.tMask] = detectReflections(data.doa, data.rir, data.fs, setup.timeMax, setup.timeRange, setup.angleRange, setup.thEcho_lat, setup.thEcho_pol, setup.thMask_lat, setup.thMask_pol, setup.eEcho, setup.eMask, data.t_mix, true);
 
 % ------------------------------------------------------ reduce refelctions
