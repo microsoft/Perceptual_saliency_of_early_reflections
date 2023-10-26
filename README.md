@@ -7,7 +7,13 @@ urlFragment: "https://github.com/microsoft/Perceptual_saliency_of_early_reflecti
 
 # Official Microsoft Sample
 
-Demo code for encoding perceptually salient early reflections for parametric spatial audio rendering.
+Demo code for encoding perceptually salient early reflections for parametric spatial audio rendering as proposed in [1].
+
+> [1] Tobias Jüterbock, Fabian Brinkmann, Hannes Gamper, Nikunj Raghuvanshi, and Stefan Weinzierl
+> 
+> 'Spatio-Temporal Windowing for Encoding Perceptually Salient Early Reflections in Parametric Spatial Audio Rendering'
+> 
+> JAES - [https://www.aes.org/e-lib/browse.cfm?elib=22239](https://www.aes.org/e-lib/browse.cfm?elib=22239)
 
 ## Contents
 
