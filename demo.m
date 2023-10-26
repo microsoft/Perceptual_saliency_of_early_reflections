@@ -4,9 +4,11 @@
 % fabian.brinkmann@tu-berlin.de, Audio Communication Group TU Berlin &
 % Microsoft Research, Redmond, USA
 %
-% [1] Tobias Jüterbock, Fabian Brinkmann, Hannes Gamper, Nikunj Raghuvanshi, and Ivan Tashev
-%     'Spatio-Temporal Windowing for Encoding Perceptually Salient Early Reflections in Parametric Spatial Audio Rendering'
-%     JAES - %TODO INSERT PUBLICATION NAME
+% [1] Tobias Jüterbock, Fabian Brinkmann, Hannes Gamper, 
+%     Nikunj Raghuvanshi, and Stefan Weinzierl
+%      'Spatio-Temporal Windowing for Encoding Perceptually Salient Early 
+%       Reflections in Parametric Spatial Audio Rendering'
+%     JAES - https://www.aes.org/e-lib/browse.cfm?elib=22239
 
 %   Copyright 2022 Microsoft Corporation
 %
