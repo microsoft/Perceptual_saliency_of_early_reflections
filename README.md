@@ -39,7 +39,7 @@ Needs parts of the FABIAN HRTF data base from (https://dx.doi.org/10.14279/depos
 
 ## Setup
 
-Run `demo.m` (will tmporarily add needed folders to the Matlab search path).
+Run `demo.m` (will temporarily add needed folders to the Matlab search path).
 
 ## Running the sample
 
