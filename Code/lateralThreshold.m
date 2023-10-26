@@ -1,14 +1,14 @@
 % [th, th_lat] = lateralThreshold(lat_target, lat_ref, width, depth, transition)
-% claculates a threhsold for the audibility of concurrent sources in
+% claculates a threshold for the audibility of concurrent sources in
 % dependency of the lateral angle (assuming an interaural polar coordinate
 % system).
 %
 % I N P U T
 % lat_target - lateral angles of the targets (e.g. concurrent sources,
-%              early relections). Scalar, vector, or [] in which case only
+%              early reflections). Scalar, vector, or [] in which case only
 %              th_lat is calculated (see output).
 % lat_ref    - lateral angle of the reference (e.g. direct sound)
-% width      - sclar that determines the width of the range where high
+% width      - scalar that determines the width of the range where high
 %              masking is assumed.
 %              1: according to values extracted from [1, Fig. 3(e)]
 %             <1: smaller range

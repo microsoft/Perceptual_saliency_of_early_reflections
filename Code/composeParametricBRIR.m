@@ -1,10 +1,10 @@
 % [BRIR, ER, LR, LRmismatch, LRdecay, LRdecayOrg] = composeParametricBRIR(RIR, DOA, fs, r, isAudible, headRot, N, tailMethod, freqMethod, spatMethod, doPlot)
-% returns a prametric BRIR composed from first sound, early, refelction and
-% late reverberation. The first sound and early refelctions are composed
+% returns a prametric BRIR composed from first sound, early, reflection and
+% late reverberation. The first sound and early reflections are composed
 % from reflections in input 'r' using the FABIAN HRTF database [1]. The
 % late reverberation is computed based on the blockwise residual RMS energy
 % of the RIR, i.e., not considering the energy contained in the first sound
-% and early refelctions. The resiudal RMS energy is used to compute a decay
+% and early reflections. The resiudal RMS energy is used to compute a decay
 % curve that is applied to gaussian noise. The output sampling rate of the
 % parametric BRIR is 44.1 kHz and corresponds to the HRTFs used.
 %
@@ -14,10 +14,10 @@
 %              are in first, second, and third column, respectively.
 % RIR        - Room impulse response of size [N x 1] (N: number of samples)
 % fs         - sampling frequency in Hz.
-% r          - List of refelctions in the format according to
+% r          - List of reflections in the format according to
 %              detectreflections.m and reduceReflections.m
 % isAudible  - logical vector of size [N x 1] where true indicates that a
-%              sample is part of the first sound or an early refelction.
+%              sample is part of the first sound or an early reflection.
 %              Samples flagged with true will be excluded from calculating
 %              the energy of the late reverberation.
 % headRot    - two element vector to apply head rotation given by
@@ -44,13 +44,13 @@
 %                       passed to this function.
 %              'ramp_b' As 'ramp_a' but applies a generic  exponential fade
 %                       in between the first sound and last included
-%                       refelction to account for residual energy.
+%                       reflection to account for residual energy.
 %              'ramp_c' as 'ramp_a' but applies an exponential fade in
-%                       between the first sound and last refelction that
+%                       between the first sound and last reflection that
 %                       matches the residual energy.
 %              'ramp_d' As 'ramp_a' but fits a second polynomial to the log
 %                       residual energy starting at the first sound and
-%                       ending at the last included refelction to
+%                       ending at the last included reflection to
 %                       acount for residual energy.
 % freqMethod - Specify frequency dependent processing (to be implemented in
 %              future versions - pass false for now)
@@ -62,7 +62,7 @@
 %
 % O U T P U T:
 % BRIR       - The parametric binaural room impulse response
-% ER         - The early refelctions of the parametric BRIR
+% ER         - The early reflections of the parametric BRIR
 % LR         - The late reverberation of the parametric BRIR
 % LRmismatch - Energetic missmatch between the parametric and actual late
 %              reverberation in dB. Mismatch comes from approximating the
@@ -146,7 +146,7 @@ n          = round(r.t*HRTF_fs)+1 - HRTF_delay;
 % HRTF length in samples
 HRTF_N     = size(h_l, 1);
 
-% write HRTFs to early refelctions
+% write HRTFs to early reflections
 for mm = 1:numel(r.t)
     ER(n(mm):n(mm)+HRTF_N-1,:) = ER(n(mm):n(mm)+HRTF_N-1,:) + [h_l(:,mm) h_r(:,mm)]*r.a(mm);
 end
@@ -207,7 +207,7 @@ elseif contains(tailMethod{1}, 'ramp')
     end
     
     % - estimate the apply the fall ramp - %
-    % sample of latest included refelctions (plus some breathing time given
+    % sample of latest included reflections (plus some breathing time given
     % by the HRTF_delay and half the expected maximum ITD)
     n                  = ceil( max(r.t) * HRTF_fs ) + HRTF_delay + ceil(350e-6*HRTF_fs);
     [pFall, ~, muFall] = polyfit((n:numel(rmsBlock))', db(rmsBlock(n:end)), tailMethod{2});
